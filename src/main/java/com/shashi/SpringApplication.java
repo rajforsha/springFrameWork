@@ -1,9 +1,10 @@
+package com.shashi;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import model.Domain;
-import model.Employee;
-import model.Manager;
+import com.shashi.model.Domain;
+import com.shashi.model.Employee;
+import com.shashi.model.Manager;
 
 /**
  * @author vagrant
