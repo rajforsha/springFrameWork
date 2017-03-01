@@ -13,8 +13,12 @@ import com.shashi.service.EmployeeService;
 @Component
 public class EmployeeServiceImpl implements EmployeeService {
 
-	@Autowired
 	public EmployeeDao employeeDao;
+
+	@Autowired
+	public EmployeeServiceImpl(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
 
 	public EmployeeDao getEmployeeDao() {
 		return employeeDao;

@@ -1,7 +1,9 @@
 package com.shashi;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.shashi.service.EmployeeService;
 
@@ -9,11 +11,25 @@ import com.shashi.service.EmployeeService;
  * @author vagrant
  *
  */
-@Component
+@RestController
 public class EmployeeApplication {
 
-	@Autowired
 	public EmployeeService employeeService;
+
+	public EmployeeApplication() {
+	}
+
+	@Autowired
+	public EmployeeApplication(EmployeeService employeeService) {
+		this.employeeService = employeeService;
+	}
+
+	@RequestMapping("/hello")
+	@GetMapping
+	public String HelloWorld() {
+		createEmployee();
+		return "Hello World !";
+	}
 
 	public EmployeeService getEmployeeService() {
 		return employeeService;
@@ -23,9 +39,4 @@ public class EmployeeApplication {
 		getEmployeeService().create();
 	}
 
-	public static void main(String[] args) {
-		EmployeeApplication app = new EmployeeApplication();
-		app.createEmployee();
-
-	}
 }
